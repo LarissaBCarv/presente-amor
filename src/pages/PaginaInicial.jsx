@@ -21,7 +21,7 @@ const PaginaInicial = () => {
         playsInline
         style={{ width: "100%", height: "100%", objectFit: "cover" }}
       >
-        <source src="./public/nosso-aniversario.mp4" type="video/mp4" />
+        <source src="/nosso-aniversario.mp4" type="video/mp4" />
         Seu navegador não suporta vídeos.
       </video>
 

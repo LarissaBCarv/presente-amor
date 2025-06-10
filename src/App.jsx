@@ -23,6 +23,8 @@ import PaginaMonteVerde from "./pages/viagens/MonteVerde.jsx";
 import PaginaSaoPaulo from "./pages/viagens/SaoPaulo.jsx";
 import PaginaStaIsabel from "./pages/viagens/Sta-Isabel.jsx";
 import PaginaSaoBento from "./pages/viagens/Sao-Bento.jsx";
+import PaginaObservarCeu from "./pages/data/ObservarCeu.jsx";
+import PaginaNoiteCasa from "./pages/data/NoiteEmCasa.jsx";
 
 import Totalizador from "./components/Totalizador.jsx";
 
@@ -57,6 +59,8 @@ const AppContent = () => {
         <Route path="/SaoPaulo" element={<PaginaSaoPaulo />} />
         <Route path="/StaIsabel" element={<PaginaStaIsabel />} />
         <Route path="/SaoBento" element={<PaginaSaoBento />} />
+        <Route path="/NoiteCasa" element={<PaginaNoiteCasa />} />
+        <Route path="/ObservarCeu" element={<PaginaObservarCeu />} />
       </Routes>
     </>
   );

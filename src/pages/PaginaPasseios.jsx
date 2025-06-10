@@ -7,52 +7,75 @@ const passeios = [
     preco: "R$ 1.200,00",
     descricao: "Um dia inteiro de relaxamento...",
     imagem: "spaday.png",
+    link: "https://lissage.com.br/product/relaxant-pour-deux/",
   },
   {
     nome: "Sampa Sky",
     preco: "R$ 350,00",
-    descricao: "A vista mais impressionante de São Paulo...",
+    descricao: "A vista mais impressionante de São Paulo.",
     imagem: "sampasky.png",
+    link: "https://www.instagram.com/sampasky/?hl=pt-br",
   },
   {
     nome: "Observar o Céu",
     preco: "R$ 300,00",
-    descricao: "Olhar as estrelas e conversar sobre a vida...",
+    descricao: "Olhar as estrelas e conversar sobre a vida.",
     imagem: "ceu.png",
+    link: "/ObservarCeu",
   },
   {
     nome: "Noite romântica em casa",
     preco: "R$ 400,00",
-    descricao: "Luzes baixas, comida gostosa e a melhor companhia...",
+    descricao: "Luzes baixas, comida gostosa e a melhor companhia.",
     imagem: "noiteemcasa.png",
+    link: "/NoiteCasa",
   },
   {
     nome: "Zoológico de SP",
     preco: "R$ 350,00",
-    descricao: "Um passeio leve e divertido...",
+    descricao: "Um passeio leve e divertido.",
     imagem: "zoo.png",
+    link: "https://www.instagram.com/zoosaopaulo/",
   },
   {
     nome: "Ir ao Cinema",
     preco: "R$ 200,00",
-    descricao: "Filme, pipoca e mãos entrelaçadas...",
+    descricao: "Filme, pipoca e mãos entrelaçadas.",
     imagem: "cinema.png",
+    link: "https://www.instagram.com/diamantevalesul/",
   },
   {
     nome: "Aquário de SP",
     preco: "R$ 450,00",
-    descricao: "Cenário encantado com peixes, tubarões...",
+    descricao: "Cenário encantado com peixes, tubarões.",
     imagem: "aquario.png",
+    link: "https://www.instagram.com/aquariosp/?hl=pt-br",
   },
   {
     nome: "Tarundu",
     preco: "R$ 620,00",
-    descricao: "Parque Tarundu: aventura e natureza...",
+    descricao: "Parque Tarundu: aventura e natureza.",
     imagem: "Tarundu.png",
+    link: "https://tarundu.com.br/",
+  },
+  {
+    nome: "Parque Maeda",
+    preco: "R$ 350,00",
+    descricao: "Natureza, flores e mãos dadas entre árvores encantadas.",
+    imagem: "parqueMaeda.png",
+    link: "https://parquemaeda.com.br/",
+  },
+  {
+    nome: "Dopamine Land",
+    preco: "R$ 200,00",
+    descricao:
+      "Luzes, risadas e sentidos despertos num mundo de pura diversão.",
+    imagem: "dopamine.png",
+    link: "https://feverup.com/m/304411?utm_source=instagram&utm_medium=bio&utm_campaign=304411_gru&utm_content=dopamineland.experience&fbclid=PAZXh0bgNhZW0CMTEAAacS2klzUd66twR4B_23p9Z8HKOecU_GvEXPW0U-rT870jITHukTGO5EEi9Zgw_aem_0_Deb1b4tv1UGmi1kF7agAp/?hl=pt-br",
   },
 ];
 
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 5;
 const LIMITE_TOTAL = 3600;
 
 const precoStringParaNumero = (precoStr) => {
@@ -65,9 +88,10 @@ const PaginaPasseios = () => {
   const [paginaAtual, setPaginaAtual] = useState(0);
   const [hoverIndex, setHoverIndex] = useState(null);
   const [selecionados, setSelecionados] = useState(() => {
-    const itens = localStorage.getItem("passeiosSelecionados");
-    return itens ? JSON.parse(itens) : [];
+    const salvos = JSON.parse(localStorage.getItem("itensSelecionados")) || [];
+    return salvos.map((item) => item.nome);
   });
+
   const navigate = useNavigate();
 
   const totalAtual = selecionados.reduce((acc, nome) => {
@@ -86,9 +110,7 @@ const PaginaPasseios = () => {
         alert(
           `Você não pode ultrapassar o limite de R$ ${LIMITE_TOTAL.toLocaleString(
             "pt-BR",
-            {
-              minimumFractionDigits: 2,
-            }
+            { minimumFractionDigits: 2 }
           )}.`
         );
         return;
@@ -97,14 +119,18 @@ const PaginaPasseios = () => {
     }
 
     setSelecionados(novosSelecionados);
-    localStorage.setItem(
-      "passeiosSelecionados",
-      JSON.stringify(novosSelecionados)
-    );
-    const novoTotal = novosSelecionados.reduce((acc, nome) => {
+
+    // Atualizar localStorage no formato esperado
+    const dadosParaSalvar = novosSelecionados.map((nome) => {
       const p = passeios.find((item) => item.nome === nome);
-      return p ? acc + precoStringParaNumero(p.preco) : acc;
-    }, 0);
+      return { nome: p.nome, preco: precoStringParaNumero(p.preco) };
+    });
+
+    localStorage.setItem("itensSelecionados", JSON.stringify(dadosParaSalvar));
+    const novoTotal = dadosParaSalvar.reduce(
+      (acc, item) => acc + item.preco,
+      0
+    );
     localStorage.setItem("totalPasseios", novoTotal);
     window.dispatchEvent(new Event("atualizarTotal"));
   };
@@ -217,17 +243,21 @@ const PaginaPasseios = () => {
                 style={{ width: "100%", borderRadius: "5px" }}
               />
               <h3 style={{ fontSize: "40px", color: "#333" }}>
-                {passeio.nome}
+                <a
+                  href={passeio.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  style={{ color: "#333", textDecoration: "underline" }}
+                >
+                  {passeio.nome}
+                </a>
               </h3>
               <p style={{ fontSize: "30px", color: "#555" }}>
                 {passeio.descricao}
               </p>
               <p
-                style={{
-                  fontSize: "30px",
-                  fontWeight: "bold",
-                  color: "#333",
-                }}
+                style={{ fontSize: "30px", fontWeight: "bold", color: "#333" }}
               >
                 {passeio.preco}
               </p>

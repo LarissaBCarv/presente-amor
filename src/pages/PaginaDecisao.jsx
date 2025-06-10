@@ -7,28 +7,28 @@ function PaginaDecisao() {
 
   const opcoes = [
     {
-      src: "./public/presentes.png",
+      src: "/presentes.png",
       titulo: "PRESENTES",
       texto:
         'Um mimo escolhido com carinho, que diz "pensei em você" sem precisar de palavras.',
       link: "/presentes",
     },
     {
-      src: "./public/viagens.png",
+      src: "/viagens.png",
       titulo: "VIAGENS",
       texto:
         "Fugir da rotina e viver dias incríveis só nós duas, em um cantinho especial.",
       link: "/viagens",
     },
     {
-      src: "./public/jantar.png",
+      src: "/jantar.png",
       titulo: "JANTAR",
       texto:
         "Um jantar delicioso, sorrisos trocados e aquele clima que só a gente entende. Um brinde ao nosso amor.",
       link: "/jantar",
     },
     {
-      src: "./public/passeios.png",
+      src: "/passeios.png",
       titulo: "PASSEIOS",
       texto:
         "Vamos explorar o mundo juntos, mesmo que seja só a cidade. Cada cantinho vira especial com você ao meu lado.",
@@ -62,7 +62,7 @@ function PaginaDecisao() {
           zIndex: -1,
         }}
       >
-        <source src="./public/paginas.mp4" type="video/mp4" />
+        <source src="/paginas.mp4" type="video/mp4" />
         Seu navegador não suporta vídeos em HTML5.
       </video>
 

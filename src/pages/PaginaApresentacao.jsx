@@ -68,7 +68,7 @@ const PaginaApresentacao = () => {
             <br /> Aqui, você vai poder escolher o tipo de comemoração, <br />
             passeios que mais combinam com a gente,
             <br /> e montar um dia só nosso — tudo dentro de um orçamento de{" "}
-            <b>R$ 2.000!</b>
+            <b>R$ 2.000! (exceto viagens) </b>
             <br /> Você escolhe, eu realizo.
             <br /> E o mais importante: vamos celebrar o nosso amor do jeito{" "}
             <br />
@@ -77,7 +77,7 @@ const PaginaApresentacao = () => {
         </header>
 
         <img
-          src="./public/desenho.png"
+          src="/desenho.png"
           alt="Nossa foto"
           style={{
             width: "100%",
