@@ -55,7 +55,7 @@ const Totalizador = () => {
         background: "linear-gradient(to bottom right, #cdffd8, #94b9ff)",
         border: "8px solid #396d7c",
         padding: "10px 40px",
-        borderRadius: "5px",
+        borderRadius: "20px",
         boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
         fontFamily: "'Share Tech', sans-serif",
         zIndex: 1000,
