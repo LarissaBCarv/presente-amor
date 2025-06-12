@@ -46,7 +46,6 @@ function PaginaDecisao() {
         fontFamily: "'Share Tech', sans-serif",
       }}
     >
-      {/* Fundo em vídeo */}
       <video
         autoPlay
         loop
@@ -66,7 +65,6 @@ function PaginaDecisao() {
         Seu navegador não suporta vídeos em HTML5.
       </video>
 
-      {/* Conteúdo */}
       <header style={{ textAlign: "center", padding: "20px" }}>
         <h1 style={{ fontSize: "100px", color: "#333" }}>
           Hora de escolher os detalhes do nosso dia!

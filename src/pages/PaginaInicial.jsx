@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const PaginaInicial = () => {
   const navigate = useNavigate();
-  const [hover, setHover] = useState(false); // Estado para gerenciar o hover
+  const [hover, setHover] = useState(false);
 
   return (
     <div
@@ -25,7 +25,6 @@ const PaginaInicial = () => {
         Seu navegador não suporta vídeos.
       </video>
 
-      {/* Texto sobre o vídeo */}
       <div
         style={{
           position: "absolute",
@@ -47,7 +46,6 @@ const PaginaInicial = () => {
           NOSSO <br /> ANIVERSÁRIO
         </p>
 
-        {/* Botão abaixo do texto */}
         <button
           onClick={() => navigate("/apresentacao")}
           onMouseEnter={() => setHover(true)}
@@ -58,7 +56,7 @@ const PaginaInicial = () => {
             fontWeight: "bold",
             fontFamily: "'Share Tech', sans-serif",
             color: "#fff",
-            backgroundColor: hover ? "#4c91a3" : "#396d7c", // tom mais claro no hover
+            backgroundColor: hover ? "#4c91a3" : "#396d7c",
             border: "none",
             borderRadius: "12px",
             cursor: "pointer",

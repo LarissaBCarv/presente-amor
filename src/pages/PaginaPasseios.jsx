@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 const passeios = [
   {
@@ -91,6 +91,20 @@ const PaginaPasseios = () => {
     const salvos = JSON.parse(localStorage.getItem("itensSelecionados")) || [];
     return salvos.map((item) => item.nome);
   });
+
+  useEffect(() => {
+    const atualizarSelecionados = () => {
+      const salvos =
+        JSON.parse(localStorage.getItem("itensSelecionados")) || [];
+      setSelecionados(salvos.map((item) => item.nome));
+    };
+
+    window.addEventListener("atualizarTotal", atualizarSelecionados);
+
+    return () => {
+      window.removeEventListener("atualizarTotal", atualizarSelecionados);
+    };
+  }, []);
 
   const navigate = useNavigate();
 

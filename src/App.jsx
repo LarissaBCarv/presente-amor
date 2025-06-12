@@ -33,12 +33,10 @@ import "./index.css";
 const AppContent = () => {
   const location = useLocation();
 
-  // Páginas onde não quer mostrar o Totalizador
   const paginasSemTotalizador = ["/", "/apresentacao"];
 
   return (
     <>
-      {/* Renderiza Totalizador só se não estiver nas duas primeiras páginas */}
       {!paginasSemTotalizador.includes(location.pathname) && <Totalizador />}
 
       <Routes>

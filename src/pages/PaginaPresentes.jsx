@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const PaginaPresentes = () => {
   const precoStringParaNumero = (precoStr) => {
@@ -11,6 +11,19 @@ const PaginaPresentes = () => {
     const itens = localStorage.getItem("itensSelecionados");
     return itens ? JSON.parse(itens) : [];
   });
+
+  useEffect(() => {
+    const atualizarItens = () => {
+      const itens = JSON.parse(localStorage.getItem("itensSelecionados")) || [];
+      setItensSelecionados(itens);
+    };
+
+    window.addEventListener("atualizarTotal", atualizarItens);
+
+    return () => {
+      window.removeEventListener("atualizarTotal", atualizarItens);
+    };
+  }, []);
 
   const [hoverIndex, setHoverIndex] = useState(null);
 

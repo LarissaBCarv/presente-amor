@@ -10,7 +10,7 @@ const PaginaApresentacao = () => {
       style={{
         position: "relative",
         width: "100%",
-        minHeight: "100vh", // ocupa toda a altura da tela
+        minHeight: "100vh",
         overflow: "hidden",
       }}
     >
@@ -36,10 +36,10 @@ const PaginaApresentacao = () => {
       <div
         style={{
           display: "flex",
-          alignItems: "center", // centraliza verticalmente
-          gap: "40px", // espaço entre texto e imagem
-          marginLeft: "150px", // pra alinhar com seu estilo atual
-          marginTop: "300px",
+          alignItems: "center",
+          gap: "40px",
+          marginLeft: "40px",
+          marginTop: "250px",
         }}
       >
         <header style={{}}>
@@ -102,7 +102,7 @@ const PaginaApresentacao = () => {
               fontWeight: "bold",
               fontFamily: "'Share Tech', sans-serif",
               color: "#fff",
-              backgroundColor: hover ? "#4c91a3" : "#396d7c", // Azul escuro e hover
+              backgroundColor: hover ? "#4c91a3" : "#396d7c",
               border: "none",
               borderRadius: "12px",
               cursor: "pointer",
@@ -111,6 +111,7 @@ const PaginaApresentacao = () => {
               height: "120px",
               transition: "background-color 0.3s ease, box-shadow 0.3s ease",
               zIndex: 2,
+              marginBottom: "150px",
             }}
           >
             Vamos Planejar!
